@@ -1,0 +1,42 @@
+
+<div class="animate__animated animate__fadeInRightBig animate__faster">
+    <h2>Por País</h2>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <app-country-input
+                (onNewCountry)="search( $event )"
+                (onDebounce)="suggestions( $event )"
+                placeholder="Buscar País"
+            ></app-country-input>
+        </div>
+    </div>
+
+    <ul *ngIf="showSugency" class="list-group">
+        <li *ngFor="let country of suggestedCountries"
+            class="list-group-item list-group-item-action">
+            <a class="nav-link"  [routerLink]="['/country', country.cca2]"> 
+                {{ country.name.common }}
+            </a> 
+        </li>
+        <li class="list-group-item list-group-item-action"
+            (click)="searchSuggested( wordSearch )">
+            <a class="nav-link"> 
+                Buscar "{{ wordSearch }}"
+            </a> 
+        </li>
+    </ul>
+    <hr>
+</div>
+
+
+<div *ngIf="isError"
+    class="alert alert-danger fw-bolder animate__animated animate__pulse">
+    No se encontro nada con el término {{ wordSearch }}
+</div>
+
+<div *ngIf="countries.length > 0" class="row">
+    <div class="col">
+        <app-country-table [countries]="countries"></app-country-table>
+    </div>
+</div>

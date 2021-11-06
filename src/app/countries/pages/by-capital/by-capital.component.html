@@ -1,0 +1,28 @@
+
+<div class="animate__animated animate__fadeInRightBig animate__faster">
+<h2>Por Capital</h2>
+
+<hr>
+
+<div class="row">
+    <div class="col">
+        <app-country-input
+            (onNewCountry)="search( $event )"
+            placeholder="Buscar Capital">
+        </app-country-input>
+    </div>
+</div>
+
+<hr>
+</div>
+
+<div *ngIf="isError"
+    class="alert alert-danger fw-bolder animate__animated animate__pulse">
+    No se encontro nada con el término {{ wordSearch }}
+</div>
+
+<div *ngIf="capital.length > 0" class="row">
+    <div class="col">
+        <app-country-table [countries]="capital"></app-country-table>
+    </div>
+</div>

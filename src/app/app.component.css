@@ -1,0 +1,9 @@
+* {
+    font-family: "Segoe UI";
+}
+
+.small-flag {
+    width: 20px;
+    height: 40px;
+    padding: 5px;
+}

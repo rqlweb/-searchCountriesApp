@@ -1,0 +1,26 @@
+<table class="table table-info table-bordered table-hover">
+    <thead>
+        <tr>
+            <th> # </th>
+            <th> Bandera </th>
+            <th> Nombre </th>
+            <th> Población </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let countryList of countries; let i = index" class="table-light text-capitalize animate__animated animate__fadeInUpBig" >
+            <td> {{ i+1 }} </td>
+            <td>
+                <img class="small-flag" 
+                     [src]="countryList.flags.png"
+                     [alt]= "countryList.name.common" > 
+            </td>
+            <td> {{ countryList.capital }}, {{ countryList.name.common }} </td>
+            <td> {{ countryList.population | number }} </td>
+            <td>
+                <a [routerLink]="['/country', countryList.cca2]">Ver más</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
